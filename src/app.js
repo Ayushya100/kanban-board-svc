@@ -9,6 +9,8 @@ import path from "path";
 import * as OpenApiValidator from "express-openapi-validator";
 
 import { errorHandler } from "./middlewares/index.js";
+import routes from "./routes/index.js";
+import { SVC_API, COOKIE_OPTIONS } from "./constants.js";
 
 const app = express();
 
@@ -44,7 +46,7 @@ app.use(
 
 app.use(express.static("public"));
 
-app.use(cookieParser());
+app.use(cookieParser(COOKIE_OPTIONS));
 
 // OpenAPI validation
 const __filename = fileURLToPath(import.meta.url);
@@ -58,6 +60,9 @@ app.use(
     validateResponses: true,
   }),
 );
+
+// Health Check Routes
+app.get(`${SVC_API}/health`, routes.healthCheck);
 
 // Error Handler Middleware
 app.use(errorHandler);

@@ -17,9 +17,8 @@ class ApiError extends Error {
   constructor(
     statusCode,
     message = "An error occurred while processing the request.",
-    devMessage = "An error occurred while processing the request.",
     type = "INTERNAL_SERVER_ERROR",
-    errors = [],
+    error = [],
     stack = "",
     data = [],
   ) {
@@ -27,7 +26,7 @@ class ApiError extends Error {
     this.message = message;
     this.statusCode = statusCode;
     this.type = type;
-    this.errors = errors;
+    this.error = error;
     this.data = data;
 
     if (stack) {
@@ -35,6 +34,19 @@ class ApiError extends Error {
     } else {
       Error.captureStackTrace(this, this.constructor);
     }
+
+    this.success = this.statusCode < 400;
+  }
+
+  toJSON() {
+    return {
+      success: this.success,
+      statusCode: this.statusCode,
+      message: this.message,
+      error: this.error,
+      data: this.data,
+      stack: this.stack,
+    };
   }
 }
 

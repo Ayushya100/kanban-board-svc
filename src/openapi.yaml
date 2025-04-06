@@ -9,5 +9,67 @@ servers:
     description: Local development server
 
 components:
+  schemas:
+    healthCheckData:
+      title: Schema for Health Check Data
+      type: object
+      properties:
+        uptime:
+          type: string
+        timestamp:
+          type: string
+        hostname:
+          type: string
+
+    healthCheckResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 200
+        message:
+          type: string
+          example: "Success"
+        success:
+          type: boolean
+        data:
+          $ref: "#/components/schemas/healthCheckData"
+
+    internalServerErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        statusCode:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: "Internal Server Error"
+        data:
+          type: array
+        error:
+          type: array
+        stack:
+          type: string
 
 paths:
+  /health:
+    get:
+      operationId: healthCheck
+      summary: Service Health Check
+      description: Check the health status of the service.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/healthCheckResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/internalServerErrorResponse"
