@@ -14,7 +14,7 @@ A collaborative task management system designed around the Kanban methodology. T
 ## API Endpoints
 ### 👤 User APIs
 |  Method  |              Endpoint             |          Description           |
-|:--------:|:----------------------------------|:-------------------------------|
+|:---------|:----------------------------------|:-------------------------------|
 | POST     | `/api/v1.0/users/register`        | Register a new user            |
 | GET      | `/api/v1.0/users/verify-email`    | Verify user email              |
 | POST     | `/api/v1.0/users/resend-email`    | Resend email verification Link |
@@ -27,7 +27,7 @@ A collaborative task management system designed around the Kanban methodology. T
 | PUT      | `/api/v1.0/users/change-password` | Change current password        |
 ### 🛠️ Project APIs
 |  Method  |                        Endpoint                   |              Description            |
-|:--------:|:--------------------------------------------------|:------------------------------------|
+|:---------|:--------------------------------------------------|:------------------------------------|
 | GET      | `/api/v1.0/projects`                              | Get all projects accessible to user |
 | GET      | `/api/v1.0/projects/:projectId`                   | Get project details by ID           |
 | POST     | `/api/v1.0/projects`                              | Create a new project                |
