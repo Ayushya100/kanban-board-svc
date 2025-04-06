@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: Kanban Board Service
+  version: 1.0.0
+  description: A collaborative task management system designed around the Kanban methodology. This project supports multiple users, projects, and tasks with real-time members assignment and role-based access.
+
+servers:
+  - url: http://192.168.0.106:3200/kanban-svc/api/v1.0
+    description: Local development server
+
+components:
+
+paths:
