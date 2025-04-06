@@ -4,6 +4,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import os from "os";
 import { logger } from "./utils/index.js";
+import { testServiceConnection } from "./utils/index.js";
 
 const log = logger("service-connection");
 
@@ -21,3 +22,5 @@ app.listen(PORT, HOST, () => {
     `Uptime : ${process.uptime()} seconds | Timestamp : ${Date.now()} | Hostname : ${os.hostname()}`,
   );
 });
+
+testServiceConnection("kanban-svc", HOST, PORT, PROTOCOL);
