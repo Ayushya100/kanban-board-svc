@@ -3,6 +3,9 @@
 import app from "./app.js";
 import dotenv from "dotenv";
 import os from "os";
+import { logger } from "./utils/index.js";
+
+const log = logger("service-connection");
 
 dotenv.config({
   path: "./env",
@@ -13,8 +16,8 @@ const PORT = process.env.PORT || 3000;
 const PROTOCOL = process.env.PROTOCOL || "http";
 
 app.listen(PORT, HOST, () => {
-  console.log(`[Kanban SVC] Server is running on port : ${PORT}`);
-  console.log(
+  log.info(`[Kanban SVC] Server is running on port : ${PORT}`);
+  log.info(
     `Uptime : ${process.uptime()} seconds | Timestamp : ${Date.now()} | Hostname : ${os.hostname()}`,
   );
 });
