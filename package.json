@@ -1,0 +1,60 @@
+{
+  "name": "kan-ban-board-svc",
+  "version": "1.0.0",
+  "description": "A collaborative task management system designed around the Kanban methodology. This project supports multiple users, projects, and tasks with real-time members assignment and role-based access.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js,.ts,.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky install",
+    "local": "nodemon src/index.js",
+    "start": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
+    "dev": "npm src/index.js"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayushya100/kanban-board-svc.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "mongodb",
+    "service"
+  ],
+  "author": "Ayushya Jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayushya100/kanban-board-svc/issues"
+  },
+  "homepage": "https://github.com/Ayushya100/kanban-board-svc#readme",
+  "devDependencies": {
+    "appmap-node": "^2.24.3",
+    "eslint": "^9.24.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-openapi-validator": "^5.4.9",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
+    "winston": "^3.17.0"
+  }
+}
