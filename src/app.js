@@ -8,6 +8,8 @@ import { fileURLToPath } from "url";
 import path from "path";
 import * as OpenApiValidator from "express-openapi-validator";
 
+import { errorHandler } from "./middlewares/index.js";
+
 const app = express();
 
 // Setting up Middlewares
@@ -56,5 +58,8 @@ app.use(
     validateResponses: true,
   }),
 );
+
+// Error Handler Middleware
+app.use(errorHandler);
 
 export default app;
